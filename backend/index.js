@@ -4,7 +4,9 @@ const app = express();
 const port = 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://bajaj-finserv-health-challenge-frontend.vercel.app"
+}));
 app.use(express.json());
 
 // Utility function to process the input data
@@ -48,9 +50,9 @@ app.post('/bfhl', (req, res) => {
     // Respond with the required data
     res.json({
       is_success: true,
-      user_id: 'john_doe_17091999', // Replace with dynamic user_id based on user input
-      email: 'john@xyz.com', // Replace with dynamic email based on user input
-      roll_number: 'ABCD123', // Replace with dynamic roll number based on user input
+      user_id: 'john_doe_17091999', 
+      email: 'john@xyz.com', 
+      roll_number: 'ABCD123', 
       ...result
     });
   } catch (error) {
@@ -67,5 +69,5 @@ app.get('/bfhl', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
